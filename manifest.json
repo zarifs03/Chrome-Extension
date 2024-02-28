@@ -1,0 +1,11 @@
+{
+	"name": "Chrome Extension",
+	"version": "1.0.0",
+	"description": "Good Good Good",
+	"manifest_version": 3,
+	"author": "Zarif Solaiman",
+	"action": {
+		"default_popup": "index.html",
+		"default_title": ""
+	}
+}
