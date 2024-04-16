@@ -1,7 +1,7 @@
 {
 	"name": "Chrome Extension",
 	"version": "1.0.0",
-	"description": "Good Good Good",
+	"description": "Pomodoro Timer for Productivity",
 	"manifest_version": 3,
 	"author": "Zarif Solaiman",
 	"action": {

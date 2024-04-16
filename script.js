@@ -1,19 +1,34 @@
-async function fetchData() {
-    const url = 'https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=wat';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '70ac4bf157mshd148458076d8deap16ad22jsn849a11e186a3',
-            'X-RapidAPI-Host': 'mashape-community-urban-dictionary.p.rapidapi.com'
-        }
-    };
+const timer = {
+    pomodoro: 25,
+    shortBreak: 5,
+    longBreak: 15,
+    longBreakInterval: 4
+};
 
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result);
-    } catch (error) {
-        console.error(error);
-    }
+const modeButtons = document.querySelector('#js-mode-buttons');
+modeButtons.addEventListener('click', handleMode);
+
+function switchMode(mode) {
+    timer.mode = mode;
+    timer.remainingTime = {
+      total: timer[mode] * 60,
+      minutes: timer[mode],
+      seconds: 0,
+    };
+  
+    document
+      .querySelectorAll('button[data-mode]')
+      .forEach(e => e.classList.remove('active'));
+    document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+    document.body.style.backgroundColor = `var(--${mode})`;
+  
+    updateClock();
 }
-fetchData();
+
+function handleMode(event) {
+    const { mode }= event.target.dataset;
+
+    if(!mode) return;
+
+    switchMode(mode);
+}
